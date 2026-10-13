@@ -1,6 +1,6 @@
 ---
 name: plan-lens
-description: "Plan your Lens for Learn AR with SPECS, the Devpost learning hackathon. A short interview checks your idea against AR design best practices and what Lens Studio's preview can do, then writes devpost/design-brief.md for CLAD to build from. Run this first, from your Lens Studio project folder."
+description: "Plan your Lens for Learn AR with SPECS, the Devpost learning hackathon. A short interview checks your idea against AR design best practices and what Lens Studio's preview can do, then writes devpost/design-brief.md for CLAD to build from. Run this first, from the folder you've set aside for your project."
 ---
 
 # plan-lens: Design Your Lens
@@ -21,7 +21,7 @@ Read `references/ar-design-rules.md` and `references/preview-limits.md` relative
 
 Keep this light. Glance at the folder and your tools, don't run diagnostics:
 
-- Is there a Lens Studio project here (a `.esproj` file)?
+- Is there already a Lens Studio project here (a `.esproj` file)? No project yet is fine; the learner creates it after the interview.
 - Can you see Lens Studio tools or CLAD skills in this session?
 
 Say what you saw in one or two sentences. If something looks missing or you can't tell, don't troubleshoot it. Point them to the hackathon's resources page, which has the Quick Start and Snap's troubleshooting guides: https://learn-specs.devpost.com/resources. Tell them the interview doesn't need any of this, so they can fix setup any time before the build. Then continue.
@@ -98,11 +98,14 @@ Show the brief in chat and ask whether anything should change. Make the changes 
 
 Say the brief is approved and give these steps:
 
-1. Keep Lens Studio open with this project. If your agent can't see Lens Studio or CLAD, use the resources page: https://learn-specs.devpost.com/resources
-2. Clear this chat (`/clear` in Claude Code) or start a new chat in this same folder. CLAD works best with a clean context.
-3. Paste this:
-   > Read devpost/design-brief.md and build it for SPECS. Follow the brief closely. Get the basic flow working first, then add detail. Write and run LEAF tests for each done criterion, and tell me which pass.
-4. A full build can take 30 minutes or more. When it's done, open the **After the build** section at the bottom of your brief and try your Lens in the preview.
+1. **Set up your SPECS project.** If you haven't created one yet, open Lens Studio, choose **SPECS**, then **Base Template**. Use **File > Save As** and save it in this same folder, the one that holds your `devpost/` folder, so your brief and your Lens live in one project (and one repo). If you already have a project, make sure it was made from the SPECS Base Template and is saved in this folder. Keep Lens Studio open with it.
+2. If your agent can't see Lens Studio or CLAD, follow the Quick Start on the resources page: https://learn-specs.devpost.com/resources
+3. Clear this chat (`/clear` in Claude Code) or start a new chat. CLAD works best with a clean context.
+4. Paste this:
+   > Read <full path to devpost/design-brief.md> and build it for SPECS. Follow the brief closely. Get the basic flow working first, then add detail. Write and run LEAF tests for each done criterion, and tell me which pass.
+
+   Fill in the brief's full path yourself before showing this, so the prompt works even if the new chat starts in the Lens Studio project's own subfolder.
+5. A full build can take 30 minutes or more. When it's done, open the **After the build** section at the bottom of your brief and try your Lens in the preview.
 
 Then close warmly. That's the end of this skill.
 
