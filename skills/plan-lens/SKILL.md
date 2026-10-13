@@ -96,18 +96,33 @@ Show the brief in chat and ask whether anything should change. Make the changes 
 
 ## Hand Off
 
-Say the brief is approved and give these steps:
+CLAD has to run in the Lens Studio project folder itself: the folder that holds the `.esproj` file and `.mcp.json`. That's where the Lens Studio tools load. So before the learner builds, the brief has to live in that folder, and the new chat has to start there.
 
-1. **Set up your SPECS project.** If you haven't created one yet, open Lens Studio, choose **SPECS**, then **Base Template**. Use **File > Save As** and save it in this same folder, the one that holds your `devpost/` folder, so your brief and your Lens live in one project (and one repo). If you already have a project, make sure it was made from the SPECS Base Template and is saved in this folder. Keep Lens Studio open with it.
-2. If your agent can't see Lens Studio or CLAD, follow the Quick Start on the resources page: https://learn-specs.devpost.com/resources
-3. Clear this chat (`/clear` in Claude Code) or start a new chat. CLAD works best with a clean context.
+Say the brief is approved, then:
+
+**1. Find the Lens Studio project.** Look for a `.esproj` file in the current folder, then in its immediate subfolders.
+
+- **In the current folder:** good, `devpost/` is already in the right place. Go to step 3.
+- **In a subfolder:** go to step 2 with that folder.
+- **None yet:** ask the learner to create it now: open Lens Studio, choose **SPECS**, then **Base Template**, then **File > Save As** and save it inside this folder. Lens Studio saves it as its own subfolder, named whatever they call it. Wait until they say it's saved, look again, and go to step 2. If there's more than one project, ask which one.
+
+**2. Move the brief into the project.** Ask before moving. Then move `devpost/` into the project folder (the one holding the `.esproj`), so the brief and the Lens live together. That folder is what they'll publish as their repo. Don't move anything else.
+
+**3. Give the learner these steps:**
+
+1. Keep Lens Studio open with this project.
+2. Quit this chat, and start your agent from your Lens project folder:
+   ```
+   cd "<full path to the Lens project folder>"
+   claude
+   ```
+   (Use the same idea for Codex or Cursor: open that exact folder.) Approve the `lens-studio` MCP server if it asks.
+3. Make sure CLAD is set up for this project, following Snap's guide for your agent. It's linked from the Quick Start on the resources page: https://learn-specs.devpost.com/resources. In Claude Code, `/mcp` should show `lens-studio` connected and `/plugin` should list CLAD.
 4. Paste this:
-   > Read <full path to devpost/design-brief.md> and build it for SPECS. Follow the brief closely. Get the basic flow working first, then add detail. Write and run LEAF tests for each done criterion, and tell me which pass.
-
-   Fill in the brief's full path yourself before showing this, so the prompt works even if the new chat starts in the Lens Studio project's own subfolder.
+   > Read devpost/design-brief.md and build it for SPECS. Follow the brief closely. Get the basic flow working first, then add detail. Write and run LEAF tests for each done criterion, and tell me which pass.
 5. A full build can take 30 minutes or more. When it's done, open the **After the build** section at the bottom of your brief and try your Lens in the preview.
 
-Then close warmly. That's the end of this skill.
+Fill in the real folder path before showing these steps. Then close warmly. That's the end of this skill.
 
 ## Conversation Style
 
