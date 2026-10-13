@@ -30,21 +30,13 @@ Keep this friendly and quick. Look at the folder and your own tools; don't run d
 
 **2. Lens Studio connection.** Check whether you have Lens Studio MCP tools (`lens-studio`). If not, ask them to open this project in Lens Studio, then quit and restart their agent in this folder, approving the `lens-studio` MCP server when asked. In Claude Code, `/mcp` should show it connected. If it still doesn't, point to Snap's guide: https://developers.specs.com/docs/clad/troubleshooting/troubleshoot-lens-studio-mcp
 
-**3. CLAD.** Check whether CLAD's skills or agents are available to you (the `ls-clad` plugin; names like `specs-experience-builder`, `verify-preview`, or `specs-leaf-...`). CLAD is what builds the Lens at the end, so make sure it's installed before the interview. If you can't see it, say so in one sentence and give the steps for their agent. They type these themselves; you can't run plugin commands for them.
+**3. CLAD.** Check whether CLAD's skills or agents are available to you (the `ls-clad` plugin; names like `specs-experience-builder`, `verify-preview`, or `specs-leaf-...`). CLAD builds the Lens at the end, so it has to be installed before this skill starts. If you can't see it, say so in one sentence and send them to Snap's setup guide for their agent:
 
-- **Claude Code** (type these in this chat, one at a time):
-  ```
-  /plugin marketplace add https://github.com/lens-studio-devs/ls-extensions.git
-  /plugin install ls-clad@ls-extensions
-  /reload-plugins
-  ```
-  Then `/plugin` should list the Lens Studio CLAD plugin under Installed.
-- **Codex:** in a terminal, run `codex plugin marketplace add lens-studio-devs/ls-extensions`. Restart Codex in this folder, type `/plugin`, and install `ls-clad`.
-- **Cursor:** follow Snap's Cursor setup guide: https://developers.specs.com/docs/clad/setup/setup-ai/cursor-setup
+- Claude Code: https://developers.specs.com/docs/clad/setup/setup-ai/claude-code-setup
+- Codex: https://developers.specs.com/docs/clad/setup/setup-ai/codex-setup
+- Cursor: https://developers.specs.com/docs/clad/setup/setup-ai/cursor-setup
 
-Snap's full guides: https://developers.specs.com/docs/clad (Claude Code: https://developers.specs.com/docs/clad/setup/setup-ai/claude-code-setup). If the plugin won't show up: https://developers.specs.com/docs/clad/troubleshooting/troubleshoot-lens-studio-plugin
-
-Wait for them to say it's done, then check again. If it's there, go on. If they're stuck, point to the troubleshooting guide and the resources page (https://learn-specs.devpost.com/resources). If they'd rather plan now and fix CLAD later, that's fine: the interview doesn't need CLAD, and the handoff reminds them.
+Ask them to install CLAD by following that guide, then come back and say `plan-lens` again. If the plugin won't show up, point to https://developers.specs.com/docs/clad/troubleshooting/troubleshoot-lens-studio-plugin. Don't walk them through it yourself. Stop.
 
 If everything's in place, say so in one sentence. Then create `devpost/` if it doesn't exist and go to the welcome.
 

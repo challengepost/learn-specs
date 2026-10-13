@@ -6,13 +6,7 @@ The skill pack for **Learn AR with SPECS** on Devpost Learn. Works in any coding
 
 1. **Create a SPECS project.** In Lens Studio, choose **SPECS**, then **Base Template**, then **File > Save As**. Lens Studio saves it as its own folder.
 2. **Start your coding agent in that project folder** (the one with the `.esproj` and `.mcp.json` files), with Lens Studio open. That's where the Lens Studio tools load.
-3. **Install CLAD** for your agent, following Snap's guide. In Claude Code:
-   ```
-   /plugin marketplace add https://github.com/lens-studio-devs/ls-extensions.git
-   /plugin install ls-clad@ls-extensions
-   /reload-plugins
-   ```
-   Guides for Claude Code, Codex and Cursor: https://developers.specs.com/docs/clad
+3. **Install CLAD** by following Snap's setup guide for your agent: https://developers.specs.com/docs/clad
 4. **Install the skill pack** in the same folder:
    ```
    npx skills add challengepost/learn-specs --all -y
