@@ -1,6 +1,6 @@
 ---
 name: plan-lens
-description: "Plan your Lens for Learn AR with SPECS, the Devpost learning hackathon. A short interview checks your idea against AR design best practices and what Lens Studio's preview can do, then writes devpost/design-brief.md for CLAD to build from. Run this first, from the folder you've set aside for your project."
+description: "Plan your Lens for Learn AR with SPECS, the Devpost learning hackathon. A short interview checks your idea against AR design best practices and what Lens Studio's preview can do, then writes devpost/design-brief.md for CLAD to build from. Run it from inside your SPECS Lens Studio project folder."
 ---
 
 # plan-lens: Design Your Lens
@@ -19,14 +19,15 @@ Read `references/ar-design-rules.md` and `references/preview-limits.md` relative
 
 ## A Quick Look at Setup
 
-Keep this light. Glance at the folder and your tools, don't run diagnostics:
+This skill runs inside the learner's Lens Studio project. The order is: create a SPECS project from the Base Template in Lens Studio, start the agent in that project's folder, install the skill pack there, then run `plan-lens`. That folder (the one with the `.esproj` file and `.mcp.json`) is where the Lens Studio tools load, where the brief goes, and what becomes their repo.
 
-- Is there already a Lens Studio project here (a `.esproj` file)? No project yet is fine; the learner creates it after the interview.
-- Can you see Lens Studio tools or CLAD skills in this session?
+Keep the check light. Glance at the folder and your tools; don't run diagnostics.
 
-Say what you saw in one or two sentences. If something looks missing or you can't tell, don't troubleshoot it. Point them to the hackathon's resources page, which has the Quick Start and Snap's troubleshooting guides: https://learn-specs.devpost.com/resources. Tell them the interview doesn't need any of this, so they can fix setup any time before the build. Then continue.
+- **A `.esproj` file is in the current folder:** good. Mention anything that looks missing (no Lens Studio tools or CLAD skills visible) in one sentence, point to the resources page, and say they can fix it before the build. Continue.
+- **A `.esproj` file is in a subfolder:** say their project lives in that subfolder, and the Lens Studio tools only load when the agent starts there. Ask them to quit, start their agent from that folder, run the skill pack install there again, and say `plan-lens`. Stop.
+- **No `.esproj` file:** say the first step is a SPECS project. In Lens Studio choose **SPECS**, then **Base Template**, then **File > Save As**. Then start the agent in that project's folder, install the skill pack there, and say `plan-lens`. The Quick Start on the resources page walks through it: https://learn-specs.devpost.com/resources. Stop.
 
-Create `devpost/` if it doesn't exist.
+Don't troubleshoot setup yourself; the resources page has the Quick Start and Snap's troubleshooting guides. Once you're in the project folder, create `devpost/` if it doesn't exist.
 
 ## Welcome
 
@@ -96,33 +97,15 @@ Show the brief in chat and ask whether anything should change. Make the changes 
 
 ## Hand Off
 
-CLAD has to run in the Lens Studio project folder itself: the folder that holds the `.esproj` file and `.mcp.json`. That's where the Lens Studio tools load. So before the learner builds, the brief has to live in that folder, and the new chat has to start there.
+Say the brief is approved, then give these steps:
 
-Say the brief is approved, then:
-
-**1. Find the Lens Studio project.** Look for a `.esproj` file in the current folder, then in its immediate subfolders.
-
-- **In the current folder:** good, `devpost/` is already in the right place. Go to step 3.
-- **In a subfolder:** go to step 2 with that folder.
-- **None yet:** ask the learner to create it now: open Lens Studio, choose **SPECS**, then **Base Template**, then **File > Save As** and save it inside this folder. Lens Studio saves it as its own subfolder, named whatever they call it. Wait until they say it's saved, look again, and go to step 2. If there's more than one project, ask which one.
-
-**2. Move the brief into the project.** Ask before moving. Then move `devpost/` into the project folder (the one holding the `.esproj`), so the brief and the Lens live together. That folder is what they'll publish as their repo. Don't move anything else.
-
-**3. Give the learner these steps:**
-
-1. Keep Lens Studio open with this project.
-2. Quit this chat, and start your agent from your Lens project folder:
-   ```
-   cd "<full path to the Lens project folder>"
-   claude
-   ```
-   (Use the same idea for Codex or Cursor: open that exact folder.) Approve the `lens-studio` MCP server if it asks.
-3. Make sure CLAD is set up for this project, following Snap's guide for your agent. It's linked from the Quick Start on the resources page: https://learn-specs.devpost.com/resources. In Claude Code, `/mcp` should show `lens-studio` connected and `/plugin` should list CLAD.
-4. Paste this:
+1. Keep Lens Studio open with this project. In Claude Code, `/mcp` should show `lens-studio` connected and `/plugin` should list CLAD. If not, follow the Quick Start on the resources page before building: https://learn-specs.devpost.com/resources
+2. Clear this chat (`/clear` in Claude Code) or start a new chat in this same folder. CLAD works best with a clean context.
+3. Paste this:
    > Read devpost/design-brief.md and build it for SPECS. Follow the brief closely. Get the basic flow working first, then add detail. Write and run LEAF tests for each done criterion, and tell me which pass.
-5. A full build can take 30 minutes or more. When it's done, open the **After the build** section at the bottom of your brief and try your Lens in the preview.
+4. A full build can take 30 minutes or more. When it's done, open the **After the build** section at the bottom of your brief and try your Lens in the preview.
 
-Fill in the real folder path before showing these steps. Then close warmly. That's the end of this skill.
+Then close warmly. That's the end of this skill.
 
 ## Conversation Style
 
