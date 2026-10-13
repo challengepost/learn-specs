@@ -1,23 +1,35 @@
-# Learn Specs — skills
+# Learn AR with SPECS: Devpost Learn skill pack
 
-Skill pack for the **Learn AR With SPECS** hackathon on Devpost Learn, packaged as agent skills. Works in any harness that reads `SKILL.md` (Claude Code, Codex, Cursor, …).
-
-> Work in progress — `1-start` is a placeholder until the curriculum is built.
+The skill pack for **Learn AR with SPECS** on Devpost Learn. Works in any coding agent that supports skills (see skills.sh): Claude Code, Codex, Cursor, and others.
 
 ## Install
+
+From your Lens Studio project folder:
 
 ```
 npx skills add challengepost/learn-specs --all -y
 ```
 
-Prerequisites: **node** and **git** installed, and an empty folder set aside for your project.
+Set up Lens Studio, the Lens Studio MCP and CLAD first. The Quick Start is on the hackathon's resources page: https://learn-specs.devpost.com/resources
 
-Invoke each skill by name in your agent, starting with `1-start`.
+## The skill
+
+| Skill | What happens | Output |
+|---|---|---|
+| `plan-lens` | A short interview about your idea, checked against AR design best practices and what Lens Studio's preview can do | `devpost/design-brief.md` |
+
+Start your agent in your Lens Studio project folder and say **plan-lens**. It takes about 20 to 30 minutes.
+
+When your brief is approved, clear the chat (or start a new one), and point CLAD at it:
+
+> Read devpost/design-brief.md and build it for SPECS. Follow the brief closely. Get the basic flow working first, then add detail. Write and run LEAF tests for each done criterion, and tell me which pass.
+
+The brief ends with an **After the build** section: how to judge your Lens in the preview, iterate with design notes, and get ready to submit. Keep the `devpost/` folder in your public repo.
 
 ## Layout
 
 ```
-skills/<name>/SKILL.md          the skill
-skills/<name>/templates/        document templates the skill fills in
-skills/<name>/references/       deeper material the skill reads on demand
+skills/plan-lens/SKILL.md          the skill
+skills/plan-lens/templates/        the design brief template
+skills/plan-lens/references/       AR design rules and preview limits the agent reads
 ```
