@@ -17,17 +17,36 @@ In this skill, don't write code, don't change the Lens Studio project, and don't
 
 Read `references/ar-design-rules.md` and `references/preview-limits.md` relative to this skill. They are for you. Never paste them into chat, and never turn them into a list of options or ideas for the learner.
 
-## A Quick Look at Setup
+## Setup Check
 
-This skill runs inside the learner's Lens Studio project. The order is: create a SPECS project from the Base Template in Lens Studio, start the agent in that project's folder, install the skill pack there, then run `plan-lens`. That folder (the one with the `.esproj` file and `.mcp.json`) is where the Lens Studio tools load, where the brief goes, and what becomes their repo.
+This skill runs inside the learner's Lens Studio project. The order is: create a SPECS project from the Base Template in Lens Studio, start the agent in that project's folder, install CLAD, install the skill pack there, then run `plan-lens`. That folder (the one with the `.esproj` file and `.mcp.json`) is where the Lens Studio tools load, where the brief goes, and what becomes their repo.
 
-Keep the check light. Glance at the folder and your tools; don't run diagnostics.
+Keep this friendly and quick. Look at the folder and your own tools; don't run diagnostics or try to fix setup yourself.
 
-- **A `.esproj` file is in the current folder:** good. Mention anything that looks missing (no Lens Studio tools or CLAD skills visible) in one sentence, point to the resources page, and say they can fix it before the build. Continue.
+**1. The project folder.**
+- **A `.esproj` file is in the current folder:** good. Go on.
 - **A `.esproj` file is in a subfolder:** say their project lives in that subfolder, and the Lens Studio tools only load when the agent starts there. Ask them to quit, start their agent from that folder, run the skill pack install there again, and say `plan-lens`. Stop.
-- **No `.esproj` file:** say the first step is a SPECS project. In Lens Studio choose **SPECS**, then **Base Template**, then **File > Save As**. Then start the agent in that project's folder, install the skill pack there, and say `plan-lens`. The Quick Start on the resources page walks through it: https://learn-specs.devpost.com/resources. Stop.
+- **No `.esproj` file:** say the first step is a SPECS project. In Lens Studio choose **SPECS**, then **Base Template**, then **File > Save As**. Then start the agent in the folder Lens Studio created, install the skill pack there, and say `plan-lens`. Stop.
 
-Don't troubleshoot setup yourself; the resources page has the Quick Start and Snap's troubleshooting guides. Once you're in the project folder, create `devpost/` if it doesn't exist.
+**2. Lens Studio connection.** Check whether you have Lens Studio MCP tools (`lens-studio`). If not, ask them to open this project in Lens Studio, then quit and restart their agent in this folder, approving the `lens-studio` MCP server when asked. In Claude Code, `/mcp` should show it connected. If it still doesn't, point to Snap's guide: https://developers.specs.com/docs/clad/troubleshooting/troubleshoot-lens-studio-mcp
+
+**3. CLAD.** Check whether CLAD's skills or agents are available to you (the `ls-clad` plugin; names like `specs-experience-builder`, `verify-preview`, or `specs-leaf-...`). CLAD is what builds the Lens at the end, so make sure it's installed before the interview. If you can't see it, say so in one sentence and give the steps for their agent. They type these themselves; you can't run plugin commands for them.
+
+- **Claude Code** (type these in this chat, one at a time):
+  ```
+  /plugin marketplace add https://github.com/lens-studio-devs/ls-extensions.git
+  /plugin install ls-clad@ls-extensions
+  /reload-plugins
+  ```
+  Then `/plugin` should list the Lens Studio CLAD plugin under Installed.
+- **Codex:** in a terminal, run `codex plugin marketplace add lens-studio-devs/ls-extensions`. Restart Codex in this folder, type `/plugin`, and install `ls-clad`.
+- **Cursor:** follow Snap's Cursor setup guide: https://developers.specs.com/docs/clad/setup/setup-ai/cursor-setup
+
+Snap's full guides: https://developers.specs.com/docs/clad (Claude Code: https://developers.specs.com/docs/clad/setup/setup-ai/claude-code-setup). If the plugin won't show up: https://developers.specs.com/docs/clad/troubleshooting/troubleshoot-lens-studio-plugin
+
+Wait for them to say it's done, then check again. If it's there, go on. If they're stuck, point to the troubleshooting guide and the resources page (https://learn-specs.devpost.com/resources). If they'd rather plan now and fix CLAD later, that's fine: the interview doesn't need CLAD, and the handoff reminds them.
+
+If everything's in place, say so in one sentence. Then create `devpost/` if it doesn't exist and go to the welcome.
 
 ## Welcome
 
